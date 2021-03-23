@@ -1,6 +1,7 @@
 FROM maven:3.6.3-jdk-8-slim as builder
 COPY pom.xml .
 COPY . .
+RUN mvn dependency:resolve
 RUN mvn -f ./pom.xml clean package 
 
 FROM openjdk:8
